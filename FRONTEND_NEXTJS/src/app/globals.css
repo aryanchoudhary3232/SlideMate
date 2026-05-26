@@ -1,0 +1,284 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.panel {
+  border: 1px solid #d8ded6;
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(37, 48, 44, 0.06);
+}
+
+.section-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1f2f2a;
+}
+
+.metric {
+  min-width: 86px;
+  border: 1px solid #d8ded6;
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 12px 14px;
+}
+
+.metric strong {
+  display: block;
+  font-size: 1.45rem;
+}
+
+.metric span {
+  color: #66766f;
+  font-size: 0.8rem;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+}
+
+.field span {
+  color: #586a63;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  border: 1px solid #ccd5d0;
+  border-radius: 7px;
+  background: #fbfcfa;
+  color: #1f2f2a;
+  padding: 11px 12px;
+  outline: none;
+}
+
+.field textarea {
+  resize: vertical;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: #3e7b68;
+  box-shadow: 0 0 0 3px rgba(62, 123, 104, 0.14);
+}
+
+.file-drop {
+  position: relative;
+  display: flex;
+  min-height: 86px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px dashed #8aa39a;
+  border-radius: 8px;
+  background: #f6faf8;
+  color: #36554b;
+  padding: 16px;
+  text-align: center;
+}
+
+.file-drop input {
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.primary-button,
+.icon-button,
+.small-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.primary-button {
+  width: 100%;
+  gap: 9px;
+  background: #264f45;
+  color: #ffffff;
+  font-weight: 700;
+  padding: 12px 16px;
+}
+
+.primary-button:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+
+.icon-button {
+  width: 38px;
+  height: 38px;
+  background: #eef3f0;
+  color: #284d43;
+}
+
+.small-button {
+  grid-column: 3;
+  min-width: 66px;
+  background: #eef3f0;
+  color: #284d43;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 7px 10px;
+}
+
+.answer-box {
+  border-left: 4px solid #39715f;
+  background: #f6faf8;
+  padding: 16px;
+}
+
+.answer-box p {
+  margin: 0;
+  white-space: pre-wrap;
+  line-height: 1.65;
+}
+
+.source-list {
+  margin-top: 14px;
+  display: grid;
+  gap: 8px;
+}
+
+.source-item {
+  display: grid;
+  gap: 2px;
+  border-top: 1px solid #d8e4df;
+  padding-top: 8px;
+  color: #52645d;
+  font-size: 0.9rem;
+}
+
+.source-item strong {
+  color: #23483e;
+}
+
+.document-list {
+  display: grid;
+  gap: 10px;
+}
+
+.document-row {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: start;
+  border: 1px solid #e0e6e2;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.document-row h3 {
+  margin: 0 0 4px;
+  font-size: 0.98rem;
+}
+
+.document-row p {
+  margin: 0;
+  color: #62736c;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.document-icon {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 8px;
+  background: #eef3f0;
+  color: #2d5f51;
+}
+
+.status {
+  border-radius: 999px;
+  padding: 5px 9px;
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.status-processed {
+  background: #dff4e9;
+  color: #1d6a48;
+}
+
+.status-processing,
+.status-uploaded {
+  background: #fff2ce;
+  color: #8a5c0a;
+}
+
+.status-failed {
+  background: #ffe1df;
+  color: #a8362b;
+}
+
+.error-text {
+  color: #a8362b !important;
+}
+
+.empty-state {
+  border: 1px dashed #cbd5d0;
+  border-radius: 8px;
+  color: #63746d;
+  padding: 20px;
+  text-align: center;
+}
+
+.toast {
+  position: fixed;
+  bottom: 18px;
+  left: 50%;
+  max-width: min(92vw, 640px);
+  transform: translateX(-50%);
+  border: 1px solid #cbd7d2;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #23312d;
+  padding: 12px 16px;
+  box-shadow: 0 12px 34px rgba(31, 47, 42, 0.18);
+}
+
+@media (max-width: 720px) {
+  .document-row {
+    grid-template-columns: 38px minmax(0, 1fr);
+  }
+
+  .status {
+    grid-column: 2;
+    justify-self: start;
+  }
+
+  .small-button {
+    grid-column: 2;
+    justify-self: start;
+  }
+}

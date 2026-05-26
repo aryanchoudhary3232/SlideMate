@@ -1,0 +1,69 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum DocumentType {
+  PYQ
+  SLIDE
+  NOTE
+}
+
+enum DocumentStatus {
+  UPLOADED
+  PROCESSING
+  PROCESSED
+  FAILED
+}
+
+model Subject {
+  id        String     @id @default(cuid())
+  name      String
+  branch    String
+  semester  String
+  createdAt DateTime   @default(now())
+  documents Document[]
+
+  @@unique([name, branch, semester])
+}
+
+model Document {
+  id           String          @id @default(cuid())
+  title        String
+  type         DocumentType
+  storageKey   String
+  fileName     String
+  mimeType     String
+  size         Int
+  uploaderName String?
+  year         String?
+  status       DocumentStatus  @default(UPLOADED)
+  errorMessage String?
+  subjectId    String
+  subject      Subject         @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+  chunks       DocumentChunk[]
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
+
+  @@index([subjectId])
+  @@index([type])
+  @@index([status])
+}
+
+model DocumentChunk {
+  id         String   @id @default(cuid())
+  documentId String
+  document   Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  content    String
+  pageNumber Int?
+  chunkIndex Int
+  embedding  Unsupported("vector(1536)")?
+  createdAt  DateTime @default(now())
+
+  @@unique([documentId, chunkIndex])
+  @@index([documentId])
+}
